@@ -2,8 +2,7 @@ package com.itlabs.algafood.di.notificacao;
 import com.itlabs.algafood.di.modelo.Cliente;
 import org.springframework.stereotype.Component;
 
-/* @Component Ao retirar a instanciação dessa classe do Container (removendo o @Component), ele passa a não ser mais
-obrigatório na classe AtivaçãoClienteService.*/
+@Component
 public class NotificadorEmail implements Notificador {
 
     @Override

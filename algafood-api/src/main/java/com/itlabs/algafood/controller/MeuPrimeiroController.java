@@ -1,4 +1,4 @@
-package com.itlabs.algafood;
+package com.itlabs.algafood.controller;
 
 import com.itlabs.algafood.di.modelo.Cliente;
 import com.itlabs.algafood.di.service.AtivacaoClienteService;
@@ -22,6 +22,6 @@ public class MeuPrimeiroController {
         Cliente cliente = new Cliente("João", "joao@xyz.com", "349999999585");
         atividacaoClienteService.ativar(cliente);
 
-        return "Olá6!";
+        return "Hello!";
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class AtivacaoClienteService {
 
+    @Autowired
     private Notificador notificador;
 
 //    @Autowired
@@ -36,8 +37,8 @@ public class AtivacaoClienteService {
      (java.lang.NullPointerException: Cannot invoke "com.itlabs.algafood.di.notificacao.Notificador.notificar
      (com.itlabs.algafood.di.modelo.Cliente, String)" because "this.notificador" is null)
     * */
-    @Autowired
-    public void setNotificador(Notificador notificador) {
-        this.notificador = notificador;
-    }
+//    @Autowired
+//    public void setNotificador(Notificador notificador) {
+//        this.notificador = notificador;
+//    }
 }

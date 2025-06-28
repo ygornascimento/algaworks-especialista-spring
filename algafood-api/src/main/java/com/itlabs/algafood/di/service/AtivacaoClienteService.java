@@ -5,7 +5,6 @@ import com.itlabs.algafood.di.notificacao.NivelUrgencia;
 import com.itlabs.algafood.di.notificacao.Notificador;
 import com.itlabs.algafood.di.notificacao.TipoNotificador;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -15,7 +14,7 @@ public class AtivacaoClienteService {
     primeiro bean a ser injetado.
     * */
 
-    @TipoNotificador(NivelUrgencia.URGENTE)
+    @TipoNotificador(NivelUrgencia.NORMAL)
     @Autowired
     private Notificador notificador;
 

@@ -1,7 +1,9 @@
 package com.itlabs.algafood.di.notificacao;
 import com.itlabs.algafood.di.modelo.Cliente;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
+@Primary
 @Component
 public class NotificadorEmail implements Notificador {
 

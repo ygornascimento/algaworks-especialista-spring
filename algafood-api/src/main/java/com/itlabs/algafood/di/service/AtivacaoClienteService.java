@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-@Component
+//@Component
 public class AtivacaoClienteService {
     /*
     Desta vez utilizamos um notificador customizado, que também é um @Qualifier para informar ao Container qual seria o
@@ -21,12 +21,12 @@ public class AtivacaoClienteService {
     @Autowired
     private Notificador notificador;
 
-    @PostConstruct
+//    @PostConstruct
     public void init() {
         System.out.println("Iniciando notificacao...");
     }
 
-    @PreDestroy
+//    @PreDestroy
     public void destroy() {
         System.out.println("Destruindo notificacao...");
     }

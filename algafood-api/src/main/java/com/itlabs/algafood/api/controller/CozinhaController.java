@@ -4,6 +4,7 @@ import com.itlabs.algafood.domain.model.Cozinha;
 import com.itlabs.algafood.domain.repository.CozinhaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,5 +25,12 @@ public class CozinhaController {
     @GetMapping("/{cozinhaId}")
     public Cozinha buscar(@PathVariable Long cozinhaId) {
         return  cozinhaRepository.buscar(cozinhaId);
+    }
+
+    @PostMapping
+    public Cozinha adicionar(@RequestBody Cozinha cozinha) {
+        Cozinha cozinhaSalva = cozinhaRepository.salvar(cozinha);
+
+        return cozinhaSalva;
     }
 }

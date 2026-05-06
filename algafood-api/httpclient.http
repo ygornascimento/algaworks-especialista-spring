@@ -18,3 +18,8 @@ Content-Type: application/json
 {
   "nome": "Argentina"
 }
+
+###
+DELETE http://localhost:8080/cozinhas/1 HTTP/1.1
+###
+DELETE http://localhost:8080/cozinhas HTTP/1.1

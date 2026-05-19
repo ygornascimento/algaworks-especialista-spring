@@ -1,9 +1,12 @@
 package com.itlabs.algafood.api.controller;
 
+import com.itlabs.algafood.domain.exceprion.EntidadeEmUsoException;
+import com.itlabs.algafood.domain.exceprion.EntidadeNaoEncontradaException;
 import com.itlabs.algafood.domain.model.Cozinha;
 import com.itlabs.algafood.domain.repository.CozinhaRepository;
 import com.itlabs.algafood.domain.service.CadastroCozinhaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -83,20 +86,13 @@ public class CozinhaController {
 
     @DeleteMapping("/{cozinhaId}")
     public ResponseEntity<Cozinha> remover(@PathVariable Long cozinhaId) {
-        Cozinha cozinha = cozinhaRepository.buscar(cozinhaId);
-
-        if (cozinha != null) {
-            cozinhaRepository.remover(cozinha);
-            return  ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        try {
+            cadastroCozinhaService.excluir(cozinhaId);
+            return ResponseEntity.noContent().build();
+        } catch (EntidadeNaoEncontradaException e) {
+            return ResponseEntity.notFound().build();
+        } catch (EntidadeEmUsoException e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
         }
-
-        return ResponseEntity.notFound().build();
-    }
-
-    @DeleteMapping
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void removerCozinhas() {
-        cozinhaRepository.listar().forEach(cozinha -> {
-            cozinhaRepository.remover(cozinha); });
     }
 }

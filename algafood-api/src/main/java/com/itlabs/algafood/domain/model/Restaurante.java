@@ -44,6 +44,14 @@ public class Restaurante {
         this.taxaFrete = taxaFrete;
     }
 
+    public Cozinha getCozinha() {
+        return cozinha;
+    }
+
+    public void setCozinha(Cozinha cozinha) {
+        this.cozinha = cozinha;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;

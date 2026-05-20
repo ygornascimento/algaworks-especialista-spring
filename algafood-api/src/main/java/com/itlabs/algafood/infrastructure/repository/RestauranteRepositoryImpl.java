@@ -1,6 +1,4 @@
 package com.itlabs.algafood.infrastructure.repository;
-
-import com.itlabs.algafood.domain.model.Cozinha;
 import com.itlabs.algafood.domain.model.Restaurante;
 import com.itlabs.algafood.domain.repository.RestauranteRepository;
 import org.springframework.stereotype.Component;

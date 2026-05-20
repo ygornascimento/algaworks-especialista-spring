@@ -1,5 +1,4 @@
-### Conzinha Controller
-
+### Conzinhas
 GET http://localhost:8080/cozinhas HTTP/1.1
 
 ###
@@ -24,7 +23,7 @@ Content-Type: application/json
 ###
 DELETE http://localhost:8080/cozinhas/1 HTTP/1.1
 
-### Restaurante Controller
+### Restaurantes
 GET http://localhost:8080/restaurantes HTTP/1.1
 
 ###

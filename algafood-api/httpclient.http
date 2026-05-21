@@ -28,3 +28,15 @@ GET http://localhost:8080/restaurantes HTTP/1.1
 
 ###
 GET http://localhost:8080/restaurantes/1 HTTP/1.1
+
+###
+POST http://localhost:8080/restaurantes HTTP/1.1
+Content-Type: application/json
+
+{
+  "nome": "Comida Mineira",
+  "taxaFrete": 12.00,
+  "cozinha": {
+    "id": 1
+  }
+}

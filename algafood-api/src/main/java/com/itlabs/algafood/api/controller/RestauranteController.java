@@ -1,12 +1,12 @@
 package com.itlabs.algafood.api.controller;
 
+import com.itlabs.algafood.domain.exceprion.EntidadeNaoEncontradaException;
 import com.itlabs.algafood.domain.model.Restaurante;
 import com.itlabs.algafood.domain.repository.RestauranteRepository;
+import com.itlabs.algafood.domain.service.CadastroRestauranteService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,9 +15,12 @@ import java.util.List;
 public class RestauranteController {
 
     final private RestauranteRepository restauranteRepository;
+    final private CadastroRestauranteService cadastroRestauranteService;
 
-    public RestauranteController(RestauranteRepository restauranteRepository) {
+    public RestauranteController(RestauranteRepository restauranteRepository,
+                                 CadastroRestauranteService cadastroRestauranteService) {
         this.restauranteRepository = restauranteRepository;
+        this.cadastroRestauranteService = cadastroRestauranteService;
     }
 
     @GetMapping
@@ -28,5 +31,17 @@ public class RestauranteController {
     @GetMapping("/{restauranteId}")
     public Restaurante buscar(@PathVariable Long restauranteId) {
         return restauranteRepository.buscar(restauranteId);
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<?> adicionar(@RequestBody Restaurante restaurante) {
+        try {
+            restaurante = cadastroRestauranteService.salvar(restaurante);
+            return ResponseEntity.status(HttpStatus.CREATED)
+                    .body(restaurante);
+        } catch (EntidadeNaoEncontradaException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 }

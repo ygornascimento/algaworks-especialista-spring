@@ -46,7 +46,7 @@ public class RestauranteController {
         }
     }
 
-    @PutMapping("/restauranteId")
+    @PutMapping("/{restauranteId}")
     public ResponseEntity<?> atualizar(@PathVariable Long restauranteId, @RequestBody Restaurante restaurante) {
         Restaurante restauranteModificado = restauranteRepository.buscar(restauranteId);
 
